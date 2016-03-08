@@ -1,0 +1,3 @@
+npm install -g underscore-cli
+
+curl -XGET 'localhost:9200/articles/_analyze?analyzer=autocomplete' -d 'Большой и длинный текст' | underscore print --color

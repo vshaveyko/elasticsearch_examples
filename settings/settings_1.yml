@@ -1,0 +1,25 @@
+settings:
+  analysis:
+    filter:
+      autocomplete_filter:
+        type:     edgeNGram
+        min_gram: 1
+        max_gram: 20
+    analyzer:
+      autocomplete:
+        type:      custom
+        tokenizer: standard
+        filter: [
+          "lowercase",
+          "autocomplete_filter"
+        ]
+mappings:
+  default:
+    dynamic_templates:
+      - template:
+          match:               "*"
+          match_mapping_type:  string
+          mapping:
+            type:            string
+            index_analyzer:  autocomplete
+            search_analyzer: standard

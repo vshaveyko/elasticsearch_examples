@@ -12,8 +12,8 @@ gem 'elasticsearch-rails'
 gem 'database_cleaner'
 
 gem 'pry'
-gem 'pry-byebug'
-gem 'pry-stack_explorer'
+# gem 'pry-byebug'
+# gem 'pry-stack_explorer'
 
 gem 'ansi'
 
