@@ -1,17 +1,17 @@
 settings:
   analysis:
     filter:
-      autocomplete_filter:
+      edge_ngram:
         type:     edgeNGram
         min_gram: 1
         max_gram: 20
     analyzer:
-      autocomplete:
-        type:      custom
+      edge_ngram:
+        type: custom
         tokenizer: standard
         filter: [
           "lowercase",
-          "autocomplete_filter"
+          "edge_ngram"
         ]
 mappings:
   default:
@@ -21,5 +21,5 @@ mappings:
           match_mapping_type:  string
           mapping:
             type:            string
-            index_analyzer:  autocomplete
+            index_analyzer:  edge_ngram
             search_analyzer: standard

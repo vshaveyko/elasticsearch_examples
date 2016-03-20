@@ -1,3 +1,7 @@
 npm install -g underscore-cli
 
-curl -XGET 'localhost:9200/articles/_analyze?analyzer=autocomplete' -d 'Большой и длинный текст' | underscore print --color
+curl -XGET 'localhost:9200/articles/_analyze?analyzer=edge_ngram' -d 'Большой и длинный текст' | underscore print --color
+
+### run test example with:
+
+ruby -I lib example1.rb

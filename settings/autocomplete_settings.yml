@@ -1,0 +1,38 @@
+settings:
+  analysis:
+    filter:
+      edge_ngram:
+        type:     edgeNGram
+        min_gram: 1
+        max_gram: 20
+      ngram:
+        type:     nGram
+        min_gram: 1
+        max_gram: 50
+    tokenizer:
+      edge_ngram_tokenizer:
+        type: edgeNGram
+        min_gram: 1
+        max_gram: 20
+        token_chars: [ "letter", "digit" ]
+    analyzer:
+      edge_ngram:
+        type: custom
+        tokenizer: standard
+        filter: [
+          "lowercase",
+          "edge_ngram"
+        ]
+      with_edge_ngram_tokenizer:
+        type: custom
+        tokenizer: edge_ngram_tokenizer
+        filter: lowercase
+mappings:
+  default:
+    properties:
+      title:
+        type: string
+        analyzer: with_edge_ngram_tokenizer
+        search_analyzer: standard
+
+# use this query Article.search(query: {match: {title: 'q'}}).to_a

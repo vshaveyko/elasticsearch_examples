@@ -2,7 +2,6 @@
 
 require 'pry'
 require 'logger'
-require 'ansi/core'
 require 'active_record'
 require 'elasticsearch/model'
 
@@ -23,8 +22,3 @@ ActiveRecord::Base.establish_connection(
 # --- files ---
 
 Dir.glob('*/*.rb').each { |r| require_relative r }
-
-# ----- Elasticsearch client setup ----------------------------------------------------------------
-
-client = Elasticsearch::Model.client = Elasticsearch::Client.new(log: true)
-Elasticsearch::Model.client.transport.logger.formatter = proc { |s, d, p, m| "\e[32m#{m}\n\e[0m" }
